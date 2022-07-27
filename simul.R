@@ -18,7 +18,7 @@ sourceCpp("LogParLik.cpp")
 #=========================================================#
 n=100; p = 20; sc = 1; KAP.j = seq(from=0.1, to=3, length.out = 20);
 xi_j = seq(from = 0.1, to = 3, length = 20); 
-B = 100; split = 0.5; mc.size=3000; iter=100; tau0 <- 0.00001
+B = 100; split = 0.5; mc.size=3000; iter=100; tau0 <- 0.0001
 lambda <- 0.8; cens_rate <- 0.27
 image.title <- paste0(Sys.Date(),"_final_sc", sc, "_n", n, "_p", p, "_kap_.1_3",".RData")
 
