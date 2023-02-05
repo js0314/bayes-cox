@@ -8,7 +8,6 @@ library(Rcpp); library(RcppArmadillo); library(mvtnorm) # cpp
 
 
 source("GdPrior.R")
-source("GdPrior_post.R")
 source("MyCriteriaList.R")
 sourceCpp("LogParLik.cpp")
 
@@ -85,10 +84,7 @@ for(song in 1:B){
   SEL.D.GD[song,] <- f4$d.map
   SEL.KAP[song] <- f4$opt.k
   
-  # # # # posterior generator
-  # post.gd <- GdPrior_post(X = X_train, time = time_train, event = event_train, init = f4$beta.map, beta.map = f4$beta.map, d.map = f4$d.map, variance.cont = 1.2)
-  # GD.POST[[song]] <- post.gd$BETA.mc
-  
+
   #----------------------------------------------------------------------------------------------------------------
 
   # evaluation
@@ -119,7 +115,6 @@ SEL.BETA.oracle <- as.data.frame(SEL.BETA.oracle); SEL.BETA.GD <- as.data.frame(
 colnames(SEL.BETA.oracle) <- colnames(SEL.BETA.GD) <- c(paste0("Beta0", 1:9), paste0("Beta", 10:p)) 
 
 
-# Summary 1 -------------------------------
 NUM.SEL <- c( round(mean(apply(SEL.BETA.oracle!=0, 1, sum)), 0),
             round(mean(apply(SEL.BETA.GD!=0, 1, sum)), 0))
 
